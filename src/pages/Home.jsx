@@ -10,7 +10,7 @@ const STEPS = [
   {
     n: '01',
     title: 'Build the tool',
-    body: 'Drop a React component into src/tools/ — it renders inside the shared layout automatically.',
+    body: 'Drop a React component into src/tools/ and it renders inside the shared layout automatically.',
   },
   {
     n: '02',
@@ -20,7 +20,7 @@ const STEPS = [
   {
     n: '03',
     title: 'Ship it',
-    body: 'Commit and push to main — Vercel builds and deploys the live site. No manual redeploy.',
+    body: 'Commit and push to main. Vercel builds and deploys the live site. No manual redeploy.',
   },
 ]
 
@@ -86,7 +86,7 @@ export default function Home() {
         <div className="container">
           <h2 className={styles.aboutHeading}>Built to grow</h2>
           <p className={styles.aboutLede}>
-            MyToolbox is designed so a new tool is three small steps — never a
+            MyToolbox is designed so a new tool is three small steps, never a
             rebuild.
           </p>
 

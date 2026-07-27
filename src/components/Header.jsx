@@ -11,7 +11,7 @@ export default function Header({ onOpenDrawer }) {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <Link to="/" className={styles.brand} aria-label="MyToolbox — home">
+        <Link to="/" className={styles.brand} aria-label="MyToolbox home">
           <span className={styles.mark}>
             <LogoMark size={26} />
           </span>

@@ -64,7 +64,7 @@ export default function EmptyState({ variant = 'empty', query = '', onClear }) {
           </>
         ) : (
           <>
-            The bench is clear for now — new tools will appear here the moment
+            The bench is clear for now. New tools will appear here the moment
             they’re added. Check back soon.
           </>
         )}

@@ -91,7 +91,7 @@ export default function Hero() {
           </h1>
 
           <p className={styles.lede}>
-            MyToolbox is a home for small, sharp web tools — added one at a time,
+            MyToolbox is a home for small, sharp web tools, added one at a time,
             each with its own place on the bench. Clean, fast, and built to grow.
           </p>
 

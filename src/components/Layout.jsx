@@ -47,7 +47,7 @@ export default function Layout() {
         <div className={`container ${styles.footerInner}`}>
           <span>MyToolbox</span>
           <span className={styles.footerDim}>
-            A personal workshop of web tools — built to grow, one tool at a time.
+            A personal workshop of web tools, built to grow one tool at a time.
           </span>
         </div>
       </footer>
