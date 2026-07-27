@@ -1,0 +1,136 @@
+.card {
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 190px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, var(--surface-2), var(--surface-1));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-rest);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))
+    translateZ(0);
+  transition:
+    transform var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) var(--ease-out),
+    border-color var(--dur-med) var(--ease-out);
+  will-change: transform;
+}
+
+.card:hover {
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-lift), 0 30px 60px -30px var(--accent-glow);
+}
+/* Lift is applied on top of the tilt via a translateZ so both coexist. */
+.card:hover {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))
+    translateZ(22px);
+}
+.card:active {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))
+    translateZ(6px) scale(0.99);
+  transition-duration: var(--dur-fast);
+}
+
+/* Moving glint that sweeps as the card lifts. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 46%,
+    transparent 62%
+  );
+  opacity: 0;
+  transform: translateX(-30%);
+  transition:
+    opacity var(--dur-med) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.card:hover .sheen {
+  opacity: 1;
+  transform: translateX(30%);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  color: var(--accent);
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    transform var(--dur-med) var(--ease-spring),
+    color var(--dur-med) var(--ease-out);
+  transform: translateZ(30px);
+}
+.card:hover .icon {
+  transform: translateZ(40px) rotate(-8deg) scale(1.06);
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  transform: translateZ(20px);
+}
+
+.name {
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transform: translateZ(18px);
+}
+
+.desc {
+  margin-top: 7px;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  transform: translateZ(12px);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-faint);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transform: translateZ(10px);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.card:hover .footer {
+  color: var(--accent);
+}
+.chevron {
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.card:hover .chevron {
+  transform: translateX(4px);
+}
