@@ -1,4 +1,5 @@
 import { lazy } from 'react'
+import { ReceiptIcon } from '../components/icons.jsx'
 
 /**
  * ============================================================================
@@ -48,17 +49,16 @@ import { lazy } from 'react'
  */
 
 export const tools = [
-  // ── No tools yet. Add entries here following the shape documented above. ──
-  //
-  // Example (uncomment, create the component, and adjust to enable):
-  //
-  // {
-  //   name: 'Word Counter',
-  //   path: '/tools/word-counter',
-  //   description: 'Count words, characters, and estimated reading time.',
-  //   icon: RulerIcon,
-  //   component: lazy(() => import('../tools/WordCounter.jsx')),
-  // },
+  {
+    name: 'Invoice Generator',
+    path: '/tools/invoice-generator',
+    description:
+      'Create branded, print-ready invoices and export them to A4 PDF.',
+    icon: ReceiptIcon,
+    component: lazy(() => import('../tools/InvoiceGenerator/index.jsx')),
+    badge: 'New',
+    keywords: ['invoice', 'billing', 'pdf', 'receipt', 'finance', 'tax'],
+  },
 ]
 
 /** Look up a single tool by its route path (used by the router/breadcrumb). */

@@ -1,0 +1,294 @@
+/* ============================================================
+   Branded invoice sheet — an isolated "paper" surface.
+   All colours/fonts come from CSS variables set inline from the
+   chosen brand template, so this file is fully brand-agnostic.
+   Sized to A4 (210mm × 297mm) for exact print/PDF output.
+   ============================================================ */
+
+.sheet {
+  box-sizing: border-box;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 16mm 15mm 14mm;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+}
+.sheet * {
+  box-sizing: border-box;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* -------------------------------- header ---------------------------------- */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.brandName {
+  font-size: 15pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.headMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  text-align: right;
+}
+.invoiceTitle {
+  font-size: 26pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metaLine {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 9.5pt;
+}
+.metaLabel {
+  color: var(--moss);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 7.5pt;
+  letter-spacing: 0.06em;
+}
+
+.badge {
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.paid {
+  background: var(--moss-tint);
+  color: var(--moss);
+  border: 1px solid var(--moss);
+}
+.unpaid {
+  background: var(--amber-tint);
+  color: var(--amber-dark);
+  border: 1px solid var(--amber);
+}
+.partial {
+  background: var(--amber-tint);
+  color: var(--amber-dark);
+  border: 1px solid var(--amber);
+}
+
+/* ------------------------------- parties ---------------------------------- */
+
+.parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+.party {
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--moss-tint);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--moss);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.partyLabel {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--moss);
+  margin-bottom: 3px;
+}
+.partyName {
+  font-size: 12pt;
+  font-weight: 700;
+  color: var(--ink);
+}
+.partyText {
+  font-size: 9.5pt;
+  color: var(--muted);
+  white-space: pre-line;
+}
+
+/* ------------------------------ line items -------------------------------- */
+
+.items {
+  margin-top: 26px;
+}
+
+.itemHead {
+  display: grid;
+  grid-template-columns: 32px 1fr 52px 90px 100px;
+  gap: 10px;
+  padding: 0 6px 8px;
+  border-bottom: 1.5px solid var(--moss);
+}
+.itemHeadSingle {
+  grid-template-columns: 1fr 52px 90px 100px;
+}
+.itemHead span {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--moss);
+}
+
+.itemRow {
+  display: grid;
+  grid-template-columns: 32px 1fr 52px 90px 100px;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 6px;
+  border-bottom: 1px solid var(--line);
+}
+.itemRowSingle {
+  grid-template-columns: 1fr 52px 90px 100px;
+  padding: 14px 6px;
+}
+
+.colNo {
+  color: var(--amber-dark);
+  font-weight: 700;
+  font-size: 9.5pt;
+}
+.colDesc {
+  min-width: 0;
+}
+.itemTitle {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--ink);
+}
+.itemRowSingle .itemTitle {
+  font-size: 13pt;
+}
+.colQty {
+  text-align: center;
+  font-size: 10pt;
+}
+.colRate,
+.colAmt {
+  text-align: right;
+  font-size: 10pt;
+}
+.itemHead .colQty {
+  text-align: center;
+}
+.itemHead .colRate,
+.itemHead .colAmt {
+  text-align: right;
+}
+.colAmt {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* -------------------------------- totals ---------------------------------- */
+
+.totals {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+.totalsInner {
+  width: min(300px, 60%);
+}
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  font-size: 10pt;
+  color: var(--muted);
+}
+.totalRow > span:first-child {
+  color: var(--ink);
+}
+.grandTotal {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1.5px solid var(--moss);
+  font-size: 15pt;
+  font-weight: 700;
+}
+.grandTotal > span {
+  color: var(--amber);
+}
+.grandTotal > span:first-child {
+  color: var(--amber);
+  letter-spacing: 0.02em;
+}
+
+/* -------------------------------- footer ---------------------------------- */
+
+.footer {
+  margin-top: auto;
+  padding-top: 22px;
+}
+.footerCols {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+.footLabel {
+  display: block;
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--moss);
+  margin-bottom: 4px;
+}
+.payRef {
+  white-space: nowrap;
+}
+.notesText {
+  font-size: 9pt;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.thankYou {
+  margin-top: 14px;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 15pt;
+  color: var(--moss);
+}

@@ -149,6 +149,15 @@ export function BoltIcon({ size = 24, ...props }) {
   )
 }
 
+export function ReceiptIcon({ size = 24, ...props }) {
+  return (
+    <Svg size={size} {...props}>
+      <path {...stroke} d="M6 3.5h12v17l-2.4-1.6-2.4 1.6-2.4-1.6-2.4 1.6L6 20.5v-17Z" />
+      <path {...stroke} d="M9.2 8h5.6M9.2 11.5h5.6M9.2 15h3.2" />
+    </Svg>
+  )
+}
+
 /* A generic fallback for a tool that hasn't declared its own icon. */
 export function ToolIcon({ size = 24, ...props }) {
   return (
